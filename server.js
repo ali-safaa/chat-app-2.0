@@ -4,6 +4,8 @@ let io = require('socket.io')(server);
 let formatMessage = require('./formatMessage');
 let express = require('express');
 let { joinUser, getCurrentUser, userLeave, getRoomUsers } = require('./users');
+let port = process.env.LOCAL || 3000;
+require('dotenv').config();
 
 app.use(express.static('client'));
 
@@ -54,4 +56,4 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(3000, () => console.log('listning'));
+server.listen(port, () => console.log('listning'));
